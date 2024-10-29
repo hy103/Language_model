@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
-from Short_transformer import Short_transformerblock
-from Layer_normalization import LayerNorm
+from _01_Short_transformer import Short_transformerblock
+from _02_Layer_normalization import LayerNorm
 
 class GPTModel(nn.Module):
     def __init__(self, cfg):
