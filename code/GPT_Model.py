@@ -57,6 +57,12 @@ batch = torch.stack(batch, dim=0)
 torch.manual_seed(123)
 model = GPTModel(GPT_CONFIG_124M)
 out = model(batch)
-print("Input batch:\n", batch)
-print("\nOutput shape:", out.shape)
-print(out)
+#print("Input batch:\n", batch)
+#print("\nOutput shape:", out.shape)
+#print(out)
+
+
+def main():
+    pass   
+if __name__ == '__main__':
+    main()

@@ -45,22 +45,28 @@ class Short_transformerblock(nn.Module):
     
 
 
-GPT_CONFIG_124M = {
-"vocab_size": 50257, # Vocabulary size
-"context_length": 1024, # Context length
-"emb_dim": 768, # Embedding dimension
-"n_heads": 12, # Number of attention heads
-"n_layers": 12, # Number of layers
-"drop_rate": 0.1, # Dropout rate
-"qkv_bias": False # Query-Key-Value bias
-}
 
-torch.manual_seed(123)
-x = torch.rand(2, 4, 768)
 
-st = Short_transformerblock(GPT_CONFIG_124M)
+def main():
+    GPT_CONFIG_124M = {
+    "vocab_size": 50257, # Vocabulary size
+    "context_length": 1024, # Context length
+    "emb_dim": 768, # Embedding dimension
+    "n_heads": 12, # Number of attention heads
+    "n_layers": 12, # Number of layers
+    "drop_rate": 0.1, # Dropout rate
+    "qkv_bias": False # Query-Key-Value bias
+    }
 
-output = st(x)
+    torch.manual_seed(123)
+    x = torch.rand(2, 4, 768)
 
-print("Input shape:", x.shape)
-print("Output shape:", output.shape)
+    st = Short_transformerblock(GPT_CONFIG_124M)
+
+    output = st(x)
+
+    print("Input shape:", x.shape)
+    print("Output shape:", output.shape)
+
+if __name__ == '__main__':
+    main()

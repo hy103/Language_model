@@ -59,3 +59,9 @@ class Multihead_attention(nn.Module):
         context_vec = self.out_proj(context_vec)
 
         return context_vec
+    
+
+def main():
+    pass   
+if __name__ == '__main__':
+    main()

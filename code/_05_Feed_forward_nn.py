@@ -17,3 +17,7 @@ class FeedForward_network(nn.Module):
     def forward(self, x):
         return self.layers(x)
 
+def main():
+    pass   
+if __name__ == '__main__':
+    main()
