@@ -34,7 +34,7 @@ def calc_loss_loader(data_loader, model, device, num_batches = None):
             total_loss+= loss.item()
         else:
             break
-    return total_loss
+    return total_loss/num_batches
 
 
 def evaluate_model(model, train_loader, val_loader, device, eval_iter):
@@ -91,7 +91,7 @@ def train_model_simple(model, train_loader, val_loader,
 
         generate_and_print(model, tokenizer, device, start_context)
 
-        return train_losses, val_losses, track_tokens_seen
+    return train_losses, val_losses, track_tokens_seen
 
 
 
@@ -109,10 +109,10 @@ GPT_CONFIG_124M = {
     "qkv_bias" : False
 }
 
-
 file_path = "verdict.txt"
-with open(file_path, "r", encoding = "utf-8") as f:
-    text_data = f.read()
+
+with open(file_path, "r", encoding="utf-8") as file:
+    text_data = file.read()
 train_ratio = 0.9
 split_idx = int(train_ratio*len(text_data))
 train_data = text_data[:split_idx]
@@ -144,7 +144,7 @@ model.to(device)
 optimizer = torch.optim.AdamW(model.parameters(), lr = 0.0004, weight_decay = 0.1)
 tokenizer = tiktoken.get_encoding("gpt2")
 
-num_epochs = 10
+num_epochs = 25
 train_losses , val_losses, tokens_seen = train_model_simple(model,
                                                             train_loader, val_loader, optimizer,
                                                             device, num_epochs=num_epochs, eval_freq =5, eval_iter = 5,
