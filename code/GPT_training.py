@@ -151,6 +151,15 @@ train_losses , val_losses, tokens_seen = train_model_simple(model,
                                                             start_context= "Every effort moves you", tokenizer=tokenizer)
 
 
+
+torch.save(model.state_dict(), "model.pth")
+torch.save({
+    "model_state_dict": model.state_dict(),
+    "optimizer_state_dict": optimizer.state_dict(),
+},
+"model_and_optimizer.pth")
+
+
 def main():
     pass   
 if __name__ == '__main__':
